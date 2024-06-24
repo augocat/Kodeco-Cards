@@ -1,17 +1,18 @@
-//
-//  CardsApp.swift
-//  Cards
-//
-//  Created by Grahame Narborough on 27/5/2024.
-//
+/// Copyright (c) 2023 Kodeco
 
 import SwiftUI
 
 @main
 struct CardsApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
+  @StateObject var store = CardStore(defaultData: false)
+
+  var body: some Scene {
+    WindowGroup {
+      CardsListView()
+        .environmentObject(store)
+        .onAppear {
+          print(URL.documentsDirectory)
         }
     }
+  }
 }
